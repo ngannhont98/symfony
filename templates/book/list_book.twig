@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{% endblock %}
+
+
+{% block body %}
+   <div class="row">
+       <div class="col-lg-2"></div>
+       <div class="col-lg-8">
+           <table class="table mt-3">
+               <thead>
+               <tr>
+                   <th scope="col">Book Code</th>
+                   <th scope="col">Book Name</th>
+                   <th scope="col">Produce Date</th>
+                   <th scope="col">Review</th>
+               </tr>
+               </thead>
+               <tbody>
+               {% for book in list %}
+                   <tr>
+                       <td><a href="{{ path('book_detail', {'book_id': book.bookCode}) }}">{{ book.bookCode }}</a></td>
+                       <td>{{ book.bookName }}</td>
+                       <td>{{ book.produce_date | date('Y-m-d')}}</td>
+                       <td>{{ book.review }}</td>
+                   </tr>
+               {% endfor %}
+               </tbody>
+           </table>
+       </div>
+       <div class="col-lg-2"></div>
+   </div>
+{#    <div class="row">#}
+{#        <input type="submit" name="add_page" value="add" />#}
+{#    </div>#}
+{% endblock %}

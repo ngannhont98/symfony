@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5 mt-3">
+            <form action="" method="get">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Book Code</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="bookCode" placeholder="Book Code">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Book Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="bookName" placeholder="Book Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Review</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="review" placeholder="Review">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Produce Date</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="produce_date" placeholder="Produce Date">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-2"></div>
+                    <input class="col-sm-8 btn btn-primary" type="submit" name="add_new" value="Add new"/>
+                    <div class="col-sm-2"></div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-5">
+            <table class="table mt-3">
+                <thead>
+                <tr>
+                    <th scope="col">Book Code</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Produce Date</th>
+                    <th scope="col">Review</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for book in list %}
+                    <tr>
+                        <td><a href="{{ path('book_detail', {'book_id': book.bookCode}) }}">{{ book.bookCode }}</a></td>
+                        <td>{{ book.bookName }}</td>
+                        <td>{{ book.produce_date | date('Y-m-d')}}</td>
+                        <td>{{ book.review }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <table class="table mt-3">
+                <thead>
+                <tr>
+                    <th scope="col">Book Code</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Produce Date</th>
+                    <th scope="col">Review</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {#                    <td>{{ detail.bookCode }}</a></td>#}
+                    {#                    <td>{{ detail.bookName }}</td>#}
+                    {#                    <td>{{ detail.produce_date | date('Y-m-d')}}</td>#}
+                    {#                    <td>{{ detail.review }}</td>#}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+{% endblock %}
