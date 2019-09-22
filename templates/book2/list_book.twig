@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{% endblock %}
+
+
+{% block body %}
+   <div class="row">
+       <div class="col-lg-2"></div>
+       <div class="col-lg-8">
+           <table class="table mt-3">
+               <thead>
+               <tr>
+                   <th scope="col">Book Code</th>
+                   <th scope="col">Book Name</th>
+{#                   <th scope="col">Produce Date</th>#}
+                   <th scope="col">Review</th>
+                   <th scope="col">Action</th>
+               </tr>
+               </thead>
+               <tbody>
+               {% for book in list %}
+                   <tr>
+                       <td><a href="{{ path('detail_book2', {'book_id': book.id }) }}">{{ book.bookCode }}</a></td>
+                       <td>{{ book.bookName }}</td>
+{#                       <td>{{ book.produce_date ? book.produce_date|date('Y-m-d') : 'unpublished'}}</td>#}
+                       <td>{{ book.review }}</td>
+                       <td class="row">
+                           <div style="text-align: left">
+                               <a href="#"><input class="btn btn-warning" type="submit" name="edit_book" value="Edit" /></a>
+                           </div>
+                           <div class="col-lg-1"></div>
+                           <div style="text-align: right">
+                               <a href="/edit_book2/{{ book.id }}"><input class="btn btn-danger" type="submit" name="delete_book" value="Delete" /></a>
+                           </div>
+                       </td>
+                   </tr>
+               {% endfor %}
+               </tbody>
+           </table>
+       </div>
+       <div class="col-lg-2"></div>
+   </div>
+    <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-2">
+            <a href="{{ path('add_book2') }}"><input class="btn btn-primary" type="submit" name="add_book" value="Add" /></a>
+        </div>
+        <div class="col-lg-5"></div>
+    </div>
+{% endblock %}

@@ -1,7 +1,3 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-
-app_book_input:
-  path: /book/input
-  controller: App\Controller\BookController::index

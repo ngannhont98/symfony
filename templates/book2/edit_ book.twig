@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <h1 style="text-align: center">
+            EDIT BOOK
+        </h1>
+        {{ form_start(form_edit) }}
+        {{ form_widget(form_edit) }}
+        {{ form_end(form_edit) }}
+    </div>
+    <div class="col-lg-4"></div>
+</div>
